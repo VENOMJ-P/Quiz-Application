@@ -17,7 +17,6 @@ async function startQuiz() {
 function showQuestion() {
   resetState();
   let currentQuestion = questions[currentQuestionIndex];
-  console.log(currentQuestion);
   let questionNo = currentQuestionIndex + 1;
   questionElement.innerHTML = questionNo + ". " + currentQuestion.question;
   Object.keys(currentQuestion.answers).forEach((key) => {
@@ -27,8 +26,6 @@ function showQuestion() {
       button.classList.add("btn");
       answerButtons.appendChild(button);
       const correct_key = `${key}_correct`;
-      // console.log(correct_key,currentQuestion,currentQuestion.correct_answers);
-      // console.log(currentQuestion.correct_answers[correct_key]);
       if (currentQuestion.correct_answers[correct_key]) {
         button.dataset.correct = currentQuestion.correct_answers[correct_key];
       }
@@ -47,8 +44,6 @@ function resetState() {
 function selectAnswer(e) {
   const selectedBtn = e.target;
   const isCorrect = selectedBtn.dataset.correct === "true";
-  console.log(selectedBtn.dataset.correct, typeof selectedBtn.dataset.correct);
-  console.log(isCorrect, typeof isCorrect);
   if (isCorrect) {
     selectedBtn.classList.add("correct");
     score++;
