@@ -1,18 +1,4 @@
-import { API_TOKEN } from "./config.js";
-
-const questionsList = async () => {
-  try {
-    const url = `https://quizapi.io/api/v1/questions?apiKey=${API_TOKEN}&category=code&difficulty=Easy&limit=5`;
-    const response = await fetch(url, {
-      method: "GET",
-    });
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
+import { questionsList } from "./questions.js";
 const questionElement = document.getElementById("question");
 const answerButtons = document.getElementById("answer-buttons");
 const nextButtton = document.getElementById("next-btn");
